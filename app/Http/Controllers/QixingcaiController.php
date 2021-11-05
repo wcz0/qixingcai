@@ -17,7 +17,7 @@ class QixingcaiController extends Controller
                 DB::raw('COUNT(*) as num'),
             )
             ->groupByRaw('number')
-            ->orderBy('num')
+            ->orderBy('num', 'desc')
             ->get();
 
         return $this->success($data);
@@ -60,7 +60,7 @@ class QixingcaiController extends Controller
             if($verify){
                 continue;
             }else{
-                $numbers[] += $int;
+                $numbers[] = $int;
             }
         }
 
