@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\QixingcaiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('index', [IndexController::class, 'index']);
+
+Route::prefix('qixingcai')->group(function(){
+    Route::get('top', [QixingcaiController::class, 'getMaxGroup']);
+    Route::get('get', [QixingcaiController::class, 'getNumber']);
+});
